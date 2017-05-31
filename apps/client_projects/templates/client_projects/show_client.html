@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{client.name}}</h1>
+    <h4>Projects</h4>
+      <ul>
+        {% for project in client.project.all %}
+        <li><a href="{% url 'show_project' client_id=project.client.id project_id=project.id %}">{{project.name}}</a></li>
+        {% endfor %}
+      </ul>
+    <h4>Contact</h4>
+      <ul>
+        <li>Email: {{client.email}}</li>
+        <li>Phone: {{client.phone}}</li>
+      </ul>
+    <h4>Notes:</h4>
+      <ul>
+        <li>{{client.notes}}</li>
+      </ul>
+
+      <button><a style="text-decoration:none; color:black;" href="{% url 'show_add_project' client_id=client.id %}">Add Project</a></button>
+      <button><a style="text-decoration:none; color:black;" href="{% url 'index' %}">Back</a></button>
+
+  </body>
+</html>
